@@ -1,2 +1,1 @@
-# Hackathon-Result
-Hackathon
+# Хакатон Result.University - Игра память
