@@ -1,21 +1,26 @@
 import { useState } from 'react'
+
+import { allSettings, defaultSettings } from '../../core/constants/for-game-setup'
 import { IGameSettings } from '../../core/types/for-game-setup'
 import { SelectOption } from '../../components/select-option'
-import { defaultSettings } from '../../core/constants/for-game-setup'
+
 import styles from './game-setup.module.scss'
+import { extractGridSizeValue, formatGridSizeOptions, formatSelectedGridSize } from '../../core/utils/game-setup.utils'
+
 
 export const GameSetup = () => {
-  const [settings, setSettings] = useState<IGameSettings>({
-    theme: 'Numbers',
-    players: '1',
-    gridSize: '4',
-  })
+  const [settings, setSettings] = useState<IGameSettings>(defaultSettings)
 
   const handleSettingChange = (key: keyof IGameSettings, value: string) => {
     setSettings((prev) => ({ ...prev, [key]: value }))
   }
 
-  function handleStartGame() {
+  const handleGridSizeChange = (value: string) => {
+    const gridSizeValue = extractGridSizeValue(value)
+    handleSettingChange('gridSize', gridSizeValue)
+  }
+
+  const handleStartGame = () => {
     console.log(settings)
   }
 
@@ -26,7 +31,7 @@ export const GameSetup = () => {
         <div className={styles.optionGroup}>
           <label className={styles.label}>Select Theme</label>
           <SelectOption
-            options={defaultSettings.themes}
+            options={allSettings.themes}
             selectedOption={settings.theme}
             onSelect={(value) => handleSettingChange('theme', value)}
           />
@@ -36,7 +41,7 @@ export const GameSetup = () => {
                         Number of Players
                     </label>
                     <SelectOption
-                        options={defaultSettings.playerCount}
+                        options={allSettings.playerCount}
                         selectedOption={settings.players}
                         onSelect={(value) => handleSettingChange('players', value)}
                     />
@@ -44,9 +49,9 @@ export const GameSetup = () => {
         <div className={styles.optionGroup}>
           <label className={styles.label}>Grid Size</label>
           <SelectOption
-            options={defaultSettings.gridSizes.map((size) => `${size}x${size}`)}
-            selectedOption={`${settings.gridSize}x${settings.gridSize}`}
-            onSelect={(value) => handleSettingChange('gridSize', value.split('x')[0])}
+            options={formatGridSizeOptions(allSettings.gridSizes)}
+            selectedOption={formatSelectedGridSize(settings.gridSize)}
+            onSelect={handleGridSizeChange}
           />
         </div>
         <button className={styles.button} onClick={handleStartGame}>
