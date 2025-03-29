@@ -1,12 +1,15 @@
 import { useState } from 'react'
 
-import { allSettings, defaultSettings } from '../../core/constants/for-game-setup'
 import { IGameSettings } from '../../core/types/for-game-setup'
 import { SelectOption } from '../../components/select-option'
+import {
+  extractGridSizeValue,
+  formatGridSizeOptions,
+  formatSelectedGridSize,
+} from '../../core/utils/game-setup.utils'
+import { settings as allSettings, defaultSettings } from '../../core/constants/for-game-setup'
 
 import styles from './game-setup.module.scss'
-import { extractGridSizeValue, formatGridSizeOptions, formatSelectedGridSize } from '../../core/utils/game-setup.utils'
-
 
 export const GameSetup = () => {
   const [settings, setSettings] = useState<IGameSettings>(defaultSettings)
@@ -36,16 +39,6 @@ export const GameSetup = () => {
             onSelect={(value) => handleSettingChange('theme', value)}
           />
         </div>
-        {/* <div className={styles.optionGroup}>
-                    <label className={styles.label}>
-                        Number of Players
-                    </label>
-                    <SelectOption
-                        options={allSettings.playerCount}
-                        selectedOption={settings.players}
-                        onSelect={(value) => handleSettingChange('players', value)}
-                    />
-                </div> */}
         <div className={styles.optionGroup}>
           <label className={styles.label}>Grid Size</label>
           <SelectOption

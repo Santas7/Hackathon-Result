@@ -5,12 +5,7 @@ import { ISelectOptionProps } from '../../core/types/for-game-setup'
 
 import styles from './select-option.module.scss'
 
-
-export const SelectOption: FC<ISelectOptionProps> = ({ 
-  options, 
-  selectedOption, 
-  onSelect 
-}) => {
+export const SelectOption: FC<ISelectOptionProps> = ({ options, selectedOption, onSelect }) => {
   return (
     <div className={styles.container}>
       {options.map((option) => (
