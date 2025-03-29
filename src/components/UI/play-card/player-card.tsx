@@ -1,3 +1,5 @@
+import style from './play-card.module.scss'
+
 interface IPlayerCardProps {
   playerName: string
   playerPoint: number
@@ -5,7 +7,7 @@ interface IPlayerCardProps {
 
 export const PlayerCard = ({ playerName, playerPoint }: IPlayerCardProps) => {
   return (
-    <div className="playerCard">
+    <div className={style.playerCard}>
       <h4>{playerName}</h4>
       <h3>{playerPoint}</h3>
     </div>

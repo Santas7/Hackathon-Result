@@ -1,4 +1,6 @@
-import { PlayerCard } from './UI/PlayerCard'
+import style from './game-footer.module.scss'
+
+import { PlayerCard } from '../UI/play-card/player-card'
 
 const playerArray: { name: string; point: number }[] = [
   { name: 'player 1', point: 3 },
@@ -8,10 +10,12 @@ const playerArray: { name: string; point: number }[] = [
 ]
 export const GameFooter = () => {
   return (
-    <footer>
+    <footer className={style.footer}>
       {playerArray &&
         playerArray.length &&
-        playerArray.map((e) => <PlayerCard playerName={e.name} playerPoint={e.point} />)}
+        playerArray.map((e) => (
+          <PlayerCard  playerName={e.name} playerPoint={e.point} />
+        ))}
     </footer>
   )
 }
