@@ -1,5 +1,5 @@
 import { FC } from 'react';
-// import styles from './SelectOption.module.scss';
+import styles from './select-option.module.scss';
 import { ISelectOptionProps } from '../../core/types/for-game-setup';
 
 
@@ -9,10 +9,11 @@ export const SelectOption: FC<ISelectOptionProps> = ({
     onSelect 
 }) => {
   return (
-    <div>
+    <div className={styles.container}>
       {options.map((option) => (
         <button
           key={option}
+          className={`${styles.option} ${selectedOption === option ? styles.selected : ''}`}
           onClick={() => onSelect(option)}
         >
           {option}

@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.option {
+  background-color: #BCCED9; 
+  border: none;
+  border-radius: 35px;
+  padding: 10px 20px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 100%;
+  cursor: pointer;
+  
+  transition: background-color 0.3s ease;
+  flex-grow: 1;
+  min-width: 100px;
+
+  &.selected {
+    background-color: #304859; 
+    color: white;
+  }
+
+  &:hover {
+    background-color: #6395B8; 
+  }
+
+  &.selected:hover {
+    background-color: #BCCED9; 
+  }
+}

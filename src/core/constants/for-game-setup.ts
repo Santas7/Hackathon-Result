@@ -1,5 +1,9 @@
-export const defaultSettings = {
+export const defaultSettings: { 
+    themes: string[], 
+    playerCount: string[], 
+    gridSizes: string[]
+} = {
     themes: ['Numbers', 'Icons'],
-    playerCount: ['1', '2', '3', '4'],
-    gridSizes: ['4x4', '6x6', '8x8']
+    playerCount: ['1'], //  ['1', '2', '3', '4']
+    gridSizes: ['4', '6', '8']
 }
