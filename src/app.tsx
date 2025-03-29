@@ -3,11 +3,11 @@ import { GameSetup } from './pages/game-setup'
 import { TestTimer } from './pages/test-timer/TestTimer'
 
 export const App = () => {
-  
+
   return (
     <div>
       {/* <GameSetup /> */}
-      {/* <GameTimer 
+      {/* <GameTimer
         time="01:22"
         movesTaken={4}
       /> */}

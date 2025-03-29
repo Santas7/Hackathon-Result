@@ -1,0 +1,36 @@
+.button {
+  margin-top: 15px;
+  background-color: #fda214;
+  color: white;
+  border: none;
+  border-radius: 35px;
+  padding: 12px 24px;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: capitalize;
+  flex: 1;
+  min-width: 200px;
+  &:hover {
+    background-color: #ffb84a;
+  }
+}
+
+.orange {
+  background-color: #fda214;
+
+  &:hover {
+    background-color: #ffb84a;
+  }
+}
+
+.secondary {
+  background-color: #dfe7ec;
+  color: #304859;
+
+  &:hover {
+    background-color: #6395b8;
+  }
+}
