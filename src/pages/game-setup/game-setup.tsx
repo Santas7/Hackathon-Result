@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { IGameSettings } from "../../core/types/for-game-setup";
+import { SelectOption } from "../../components/select-option/SelectOption";
+import { defaultSettings } from "../../core/constants/for-game-setup";
 
 export const GameSetup = () => {
     const [settings, setSettings] = useState<IGameSettings>({
@@ -7,7 +9,15 @@ export const GameSetup = () => {
         players: '1',
         gridSize: '4x4',
     });
-    console.log(settings);
+    
+    const handleSettingChange = (key: keyof IGameSettings, value: string) => {
+        setSettings((prev) => ({ ...prev, [key]: value }));
+    };
+
+    function handleStartGame() {
+        console.log(settings);
+    }
+
     return (
         <div>
             <h1>memory</h1>
@@ -16,20 +26,35 @@ export const GameSetup = () => {
                     <label>
                         Select Theme
                     </label>
-                    <div>тут options кнопки</div>
+                    <SelectOption
+                        options={defaultSettings.themes}
+                        selectedOption={settings.theme}
+                        onSelect={(value) => handleSettingChange('theme', value)}
+                    />
                 </div>
                 <div>
                     <label>
                         Number of Players
                     </label>
-                    <div>тут options кнопки</div>
+                    <SelectOption
+                        options={defaultSettings.playerCount}
+                        selectedOption={settings.players}
+                        onSelect={(value) => handleSettingChange('players', value)}
+                    />
                 </div>
                 <div>
                     <label>
                         Grid Size
                     </label>
-                    <div>тут options кнопки</div>
+                    <SelectOption
+                        options={defaultSettings.gridSizes}
+                        selectedOption={settings.gridSize}
+                        onSelect={(value) => handleSettingChange('gridSize', value)}
+                    />
                 </div>
+                <button onClick={handleStartGame} >
+                    Start Game
+                </button>
             </div>
         </div>
     )

@@ -1,3 +1,7 @@
+import { GameSetup } from "./pages/game-setup/game-setup"
+
 export const App = () => {
-  return <div>Начальная страница</div>
+  return <div>
+    <GameSetup />
+  </div>
 }
