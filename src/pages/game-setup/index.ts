@@ -1,1 +1,1 @@
-export { GameSetup } from './game-setup';
+export { GameSetup } from './game-setup'

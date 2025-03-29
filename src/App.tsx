@@ -1,7 +1,9 @@
-import { GameSetup } from "./pages/game-setup";
+import { GameSetup } from './pages/game-setup'
 
 export const App = () => {
-  return <div>
-    <GameSetup />
-  </div>
+  return (
+    <div>
+      <GameSetup />
+    </div>
+  )
 }
