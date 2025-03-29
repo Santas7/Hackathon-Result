@@ -1,3 +1,5 @@
+import { GameAreaPage } from './page/GameAreaPage/GameAreaPage'
+
 export const App = () => {
-  return <div>Начальная страница</div>
+  return <GameAreaPage />
 }
