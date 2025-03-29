@@ -12,9 +12,24 @@ export const GameSetup = () => {
         <div>
             <h1>memory</h1>
             <div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
+                <div>
+                    <label>
+                        Select Theme
+                    </label>
+                    <div>тут options кнопки</div>
+                </div>
+                <div>
+                    <label>
+                        Number of Players
+                    </label>
+                    <div>тут options кнопки</div>
+                </div>
+                <div>
+                    <label>
+                        Grid Size
+                    </label>
+                    <div>тут options кнопки</div>
+                </div>
             </div>
         </div>
     )
