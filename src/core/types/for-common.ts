@@ -21,3 +21,7 @@ export interface IPlayerCardProps {
   playerName: string
   playerPoint: number
 }
+
+export interface IBurgerMenu {
+  closeClick: () => void
+}
