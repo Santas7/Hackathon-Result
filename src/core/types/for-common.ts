@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 export interface IActionButtonProps {
   onClick: () => void
   children: React.ReactNode
@@ -10,8 +12,9 @@ export interface IAreaButtonProps {
 }
 
 export interface IAreaCardProps {
-  n: number | null
-  onClick: () => void
+  n: number | IconType | null;
+  onClick: () => void;
+  isIcon?: boolean;
 }
 
 export interface IPlayerCardProps {

@@ -9,7 +9,11 @@ export const GameArea = ({}: IGameArea) => {
   return (
     <div className={styles.gameArea}>
       <GameAreaHeader />
-      <GameAreaMain />
+      <GameAreaMain 
+        gridSize="8"
+        players="1"
+        theme="Icons"
+      />
     </div>
   )
 }
