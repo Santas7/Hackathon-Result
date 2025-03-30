@@ -39,7 +39,9 @@ export const GameAreaMain = () => {
 
   const handleNewGame = () => {
     navigate('/dashboard-page')
+    window.location.reload()
   }
+
   const handleRestart = () => {
     navigate('/game-area-page')
     window.location.reload()
