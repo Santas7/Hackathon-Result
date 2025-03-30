@@ -1,15 +1,13 @@
 import { GameAreaHeader } from '../../components/game-area/game-area-header/index'
 import { GameAreaMain } from '../../components/game-area/game-area-main/game-area-main'
+import { IGameArea } from '../../core/types/for-game-area'
 // import { GameFooter } from '../../components/game-footer/game-footer'
-import style from './game-area.module.scss'
+import styles from './game-area.module.scss'
 
-interface IGameAreaPageProps {}
 
-export const GameArea = ({}: IGameAreaPageProps) => {
-  console.log(style)
-
+export const GameArea = ({}: IGameArea) => {
   return (
-    <div className={style.gameArea}>
+    <div className={styles.gameArea}>
       <GameAreaHeader />
       <GameAreaMain />
       {/* <GameFooter /> */}

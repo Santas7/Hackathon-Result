@@ -9,7 +9,10 @@ export interface IAreaButtonProps {
     onClick: () => void
 }
 
-export interface IAreaCardProps {}
+export interface IAreaCardProps {
+    n: number | null,
+    onClick: () => void
+}
 
 export interface IPlayerCardProps {
     playerName: string
