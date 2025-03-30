@@ -18,12 +18,6 @@ export const TestTimer = () => {
         setIsGameRunning(false);
     };
 
-    return (
-        <div>
-            {/* <GameTimer time={formattedTime} movesTaken={4} /> */}
-            <p>Time: {formattedTime}</p>
-            <button onClick={handleStart}>Start Game</button>
-            <button onClick={handleStop}>Stop Game</button>
-        </div>
-    );
+    return  <GameTimer time={formattedTime} movesTaken={4} handleStart={handleStart} handleStop={handleStop}/>
+
 };
