@@ -1,19 +1,19 @@
-import { LoginPage } from './pages/login-page/login-page'
+import { Login } from './pages/login/login'
 import { GameSetup } from './pages/game-setup'
-import { RegistrationPage } from './pages/registration-page/registration-page'
+import { Registration } from './pages/registration/registration'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GameArea } from './pages/game-area'
-import { DashboardPage } from './pages/dashboard-page/dashboard-page'
+import { Dashboard } from './pages/dashboard/dashboard'
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/registration-page" element={<RegistrationPage />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/registration-page" element={<Registration />} />
         <Route path="/game-area-page" element={<GameArea />} />
         <Route path="/game-setup-page" element={<GameSetup />} />
-        <Route path="/dashboard-page" element={<DashboardPage />} />
+        <Route path="/dashboard-page" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   )

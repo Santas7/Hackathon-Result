@@ -24,7 +24,7 @@ const loginScheme = yup.object({
     .required('обязательное поле'),
 })
 
-export const RegistrationPage = () => {
+export const Registration = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
   const [registrationUser, { data: userData }] = useRegisterUserMutation()
 

@@ -19,7 +19,7 @@ const loginScheme = yup.object({
   userPassword: yup.string().min(4, 'Минимум 4 символа').required('Обязательное поле'),
 })
 
-export const LoginPage = () => {
+export const Login = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
   const [loginUser] = useLoginUserMutation()
   const navigate = useNavigate()
