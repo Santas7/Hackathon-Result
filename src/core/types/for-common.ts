@@ -5,16 +5,16 @@ export interface IActionButtonProps {
 }
 
 export interface IAreaButtonProps {
-    buttonText: string
-    onClick: () => void
+  buttonText: string
+  onClick: () => void
 }
 
 export interface IAreaCardProps {
-    n: number | null,
-    onClick: () => void
+  n: number | null
+  onClick: () => void
 }
 
 export interface IPlayerCardProps {
-    playerName: string
-    playerPoint: number
+  playerName: string
+  playerPoint: number
 }

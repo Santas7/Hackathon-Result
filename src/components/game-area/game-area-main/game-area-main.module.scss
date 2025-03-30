@@ -5,6 +5,7 @@
   gap: calc(0.8vw + 5.2px);
   width: fit-content;
   margin: 0 auto;
+  z-index: 999;
 }
 @media (max-width: 750px) {
   .gameAreaMain {
