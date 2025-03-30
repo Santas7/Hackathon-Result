@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-const INITIAL_TIME = 120
+const INITIAL_TIME = 0
 
 export const useGameTime = (isRunning: boolean) => {
   const [time, setTime] = useState(INITIAL_TIME)
@@ -9,7 +9,7 @@ export const useGameTime = (isRunning: boolean) => {
   useEffect(() => {
     if (isRunning) {
       intervalRef.current = setInterval(() => {
-        setTime((prev) => (prev > 0 ? prev - 1 : 0))
+        setTime((prev) => (prev >= 0 ? prev + 1 : 0))
       }, 1000)
     }
     return () => {
@@ -24,6 +24,13 @@ export const useGameTime = (isRunning: boolean) => {
     setTime(INITIAL_TIME)
   }
 
+  const stopTimer = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+      intervalRef.current = null
+    }
+  }
+
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60)
     const secs = seconds % 60
@@ -36,6 +43,7 @@ export const useGameTime = (isRunning: boolean) => {
     time,
     formattedTime: formatTime(time),
     resetTime,
+    stopTimer,
     isTimeUp,
   }
 }

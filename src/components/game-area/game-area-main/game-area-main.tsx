@@ -15,7 +15,7 @@ export const GameAreaMain = () => {
     players: state.gameSetup.settings.players,
     theme: state.gameSetup.settings.theme,
   }));
-  const { formattedTime, resetTime, isTimeUp } = useGameTime(true);
+  const { formattedTime, resetTime, isTimeUp, stopTimer } = useGameTime(true);
   const { movesTaken, incrementMoves, resetMoves } = useGameMove();
   const { cardValues, flippedCards, matchedCards, handleCardClick, resetGame } = useLogicMemoryGame(
     gridSize || "6", 
