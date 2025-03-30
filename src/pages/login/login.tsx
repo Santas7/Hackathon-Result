@@ -23,6 +23,7 @@ const loginScheme = yup.object({
 
 export const Login = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
+  const [serverError, setServerError] = useState<string | null>(null) 
   const [loginUser] = useLoginUserMutation()
   const navigate = useNavigate()
 
@@ -48,6 +49,7 @@ export const Login = () => {
   }, [userName, userPassword])
 
   const onLoginSubmit: SubmitHandler<ILoginForm> = async (data) => {
+    setServerError(null) 
     try {
       const payload = {
         username: data.userName,
@@ -61,12 +63,15 @@ export const Login = () => {
           navigate('/dashboard-page')
         } catch (storageError) {
           console.error('Ошибка при сохранении токена:', storageError)
+          setServerError('Ошибка сохранения данных. Попробуйте снова.')
         }
       } else {
         console.warn('Ответ сервера не содержит токен')
+        setServerError('Ошибка авторизации. Проверьте данные.')
       }
-    } catch (error) {
-      console.error(' Ошибка при авторизации:', error)
+    } catch (error: any) {
+      console.error('Ошибка при авторизации:', error)
+      setServerError(error?.data?.message || 'Ошибка авторизации. Проверьте логин и пароль.')
     }
   }
 
@@ -75,6 +80,11 @@ export const Login = () => {
       <div className={styles.container}>
         <form onSubmit={handleSubmit(onLoginSubmit)}>
           <h1>Авторизация</h1>
+
+          {serverError && (
+            <div className={styles.errorMessage}>{serverError}</div>
+          )}
+
           <Controller
             name="userName"
             control={control}

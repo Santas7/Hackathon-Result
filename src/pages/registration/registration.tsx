@@ -11,7 +11,6 @@ import { useRegisterUserMutation } from '../../store/api/auth-api'
 
 import styles from './registration.module.scss'
 
-
 interface ILoginForm {
   userName: string
   newPassword: string
@@ -29,6 +28,7 @@ const loginScheme = yup.object({
 
 export const Registration = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true)
+  const [serverError, setServerError] = useState<string | null>(null) 
   const [registrationUser, { data: userData }] = useRegisterUserMutation()
 
   const navigate = useNavigate()
@@ -57,6 +57,7 @@ export const Registration = () => {
   }, [userName, newPassword, repeatPassword])
 
   const onRegistrationSubmit: SubmitHandler<ILoginForm> = async (data) => {
+    setServerError(null)
     if (data.newPassword !== data.repeatPassword) {
       setError('repeatPassword', { type: 'manual', message: 'Пароли должны совпадать' })
       return
@@ -73,8 +74,9 @@ export const Registration = () => {
         alert('Вы успешно прошли регистрацию')
         navigate('/')
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Ошибка при регистрации:', error)
+      setServerError(error?.data?.message || 'Ошибка при регистрации. Попробуйте снова.')
     }
   }
 
@@ -83,6 +85,10 @@ export const Registration = () => {
       <div className={styles.container}>
         <form action="#" onSubmit={handleSubmit(onRegistrationSubmit)}>
           <h1>Регистрация</h1>
+
+          {serverError && (
+            <div className={styles.errorMessage}>{serverError}</div>
+          )}
 
           <Controller
             name="userName"
