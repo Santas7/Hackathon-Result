@@ -10,12 +10,14 @@
   justify-content: center;
   font-weight: 700;
   line-height: 100%;
+  z-index: 999;
+  padding: 24px;
 }
 
 .modal {
   background: #f2f2f2;
   border-radius: 20px;
-  padding: 64px;
+  padding: calc(3vw + 12.7px);
   width: 654px;
   text-align: center;
 }
@@ -57,4 +59,14 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+}
+@media (max-width: 575px) {
+  .buttons {
+    flex-direction: column;
+  }
+  .stat {
+    .statValue {
+      font-size: 20px;
+    }
+  }
 }

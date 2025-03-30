@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux' 
-import { setGameSettings } from '../../store/reducers/game-setup' 
+import { useDispatch } from 'react-redux'
+import { setGameSettings } from '../../store/reducers/game-setup'
 
 import { IGameSettings } from '../../core/types/for-game-setup'
 import { SelectOption } from '../../components/select-option'
@@ -29,14 +29,13 @@ export const GameSetup = () => {
   }
 
   const handleStartGame = () => {
-    dispatch(setGameSettings(settings)) 
+    dispatch(setGameSettings(settings))
     console.log('Settings saved to Redux:', settings)
     navigate('/game-area-page')
   }
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>memory</h1>
       <div className={styles.setupCard}>
         <div className={styles.optionGroup}>
           <label className={styles.label}>Select Theme</label>

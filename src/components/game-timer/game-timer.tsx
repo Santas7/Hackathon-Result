@@ -7,16 +7,12 @@ export const GameTimer: FC<IGameTimerProps> = ({ time, movesTaken }) => {
     <div className={styles.overlay}>
       <div className={styles.panelsContainer}>
         <div className={styles.panel}>
-          <div className={styles.stat}>
-            <span>Time</span>
-            <strong className={styles.statValue}>{time}</strong>
-          </div>
+          <div>Time</div>
+          <div className={styles.statValue}>{time}</div>
         </div>
         <div className={styles.panel}>
-          <div className={styles.stat}>
-            <span>Moves</span>
-            <strong className={styles.statValue}>{movesTaken}</strong>
-          </div>
+          <div>Moves</div>
+          <div className={styles.statValue}>{movesTaken}</div>
         </div>
       </div>
     </div>

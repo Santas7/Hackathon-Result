@@ -18,12 +18,12 @@
 .setupCard {
   background-color: white;
   border-radius: 20px;
-  padding: 64px;
+  padding: calc(3vw + 12.7px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 654px;
+  width: calc(30.8vw + 210px);
 }
 
 .optionGroup {
