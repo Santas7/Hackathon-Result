@@ -31,15 +31,15 @@
 }
 
 .front {
-  background-color: #486a7c; 
-  transform: rotateY(0deg); 
+  background-color: #486a7c;
+  transform: rotateY(0deg);
 }
 
 .back {
-  background-color: #304859; 
+  background-color: #304859;
   transform: rotateY(180deg);
 }
 
 .areaCard.flipped .cardInner {
-  transform: rotateY(180deg); 
+  transform: rotateY(180deg);
 }

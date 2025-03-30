@@ -1,1 +1,1 @@
-export {GameTimer} from './game-timer'
+export { GameTimer } from './game-timer'
