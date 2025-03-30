@@ -1,6 +1,7 @@
-import style from './game-footer.module.scss'
+import { PlayerCard } from '../../common/player-card/player-card'
 
-import { PlayerCard } from '../common/play-card/player-card'
+import styles from './game-footer.module.scss'
+
 
 const playerArray: { name: string; point: number }[] = [
   { name: 'player 1', point: 3 },
@@ -8,9 +9,10 @@ const playerArray: { name: string; point: number }[] = [
   { name: 'player 3', point: 3 },
   { name: 'player 4', point: 3 },
 ]
-export const GameFooter = () => {
+
+export const GameAreaFooter = () => {
   return (
-    <footer className={style.footer}>
+    <footer className={styles.footer}>
       {playerArray &&
         playerArray.length &&
         playerArray.map((e) => <PlayerCard playerName={e.name} playerPoint={e.point} />)}

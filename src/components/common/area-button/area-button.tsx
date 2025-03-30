@@ -1,8 +1,5 @@
-interface IButtonProps {
-  buttonText: string
-  onClick: () => void
-}
+import { IAreaButtonProps } from "../../../core/types/for-common"
 
-export const AreaButton = ({ buttonText, onClick }: IButtonProps) => {
+export const AreaButton = ({ buttonText, onClick }: IAreaButtonProps) => {
   return <button onClick={() => onClick}>{buttonText}</button>
 }

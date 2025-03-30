@@ -1,6 +1,7 @@
-import style from './area-card.module.scss'
-interface IAreaCardProps {}
+import { IAreaCardProps } from '../../../core/types/for-common'
+
+import styles from './area-card.module.scss'
 
 export const AreaCard = ({}: IAreaCardProps) => {
-  return <div className={style.areaCard}>7</div>
+  return <div className={styles.areaCard}>7</div>
 }

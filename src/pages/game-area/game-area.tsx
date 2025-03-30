@@ -1,5 +1,5 @@
-import { GameAreaHeader } from '../../components/game-area-header/index'
-import { GameAreaMain } from '../../components/game-area-main/game-area-main'
+import { GameAreaHeader } from '../../components/game-area/game-area-header/index'
+import { GameAreaMain } from '../../components/game-area/game-area-main/game-area-main'
 // import { GameFooter } from '../../components/game-footer/game-footer'
 import style from './game-area.module.scss'
 
