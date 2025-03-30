@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../../../store'; 
 import { AreaCard } from '../../common/area-card/index';
-import { IGameAreaMainProps } from '../../../core/types/for-game-area';
 import { useGameTime } from '../../../core/hooks/use-game-timer';
 import { useGameMove } from '../../../core/hooks/use-game-move';
 import { useLogicMemoryGame } from '../../../core/hooks/use-logic-memory-game';
@@ -7,14 +9,18 @@ import { GameTimer } from '../../game-timer';
 
 import styles from './game-area-main.module.scss';
 
-export const GameAreaMain = ({ 
-  gridSize = "6", 
-  players = "1", 
-  theme = "Numbers" 
-}: IGameAreaMainProps) => {
+export const GameAreaMain = () => {
+  const { gridSize, players, theme } = useSelector((state: RootState) => ({
+    gridSize: state.gameSetup.settings.gridSize,
+    players: state.gameSetup.settings.players,
+    theme: state.gameSetup.settings.theme,
+  }));
   const { formattedTime, resetTime, isTimeUp } = useGameTime(true);
   const { movesTaken, incrementMoves, resetMoves } = useGameMove();
-  const { cardValues, flippedCards, matchedCards, handleCardClick, resetGame } = useLogicMemoryGame(gridSize, theme);
+  const { cardValues, flippedCards, matchedCards, handleCardClick, resetGame } = useLogicMemoryGame(
+    gridSize || "6", 
+    theme || "Numbers" 
+  );
 
   const onCardClick = (index: number) => {
     if (isTimeUp()) return;

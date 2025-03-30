@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux' 
+import { setGameSettings } from '../../store/reducers/game-setup' 
 
 import { IGameSettings } from '../../core/types/for-game-setup'
 import { SelectOption } from '../../components/select-option'
@@ -10,9 +12,12 @@ import {
 import { settings as allSettings, defaultSettings } from '../../core/constants/for-game-setup'
 
 import styles from './game-setup.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 export const GameSetup = () => {
   const [settings, setSettings] = useState<IGameSettings>(defaultSettings)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSettingChange = (key: keyof IGameSettings, value: string) => {
     setSettings((prev) => ({ ...prev, [key]: value }))
@@ -24,7 +29,9 @@ export const GameSetup = () => {
   }
 
   const handleStartGame = () => {
-    console.log(settings)
+    dispatch(setGameSettings(settings)) 
+    console.log('Settings saved to Redux:', settings)
+    navigate('/game-area-page')
   }
 
   return (

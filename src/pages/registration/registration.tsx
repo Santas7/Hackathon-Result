@@ -1,13 +1,16 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { AppButton } from '../../components/common/app-button/app-button'
-import { AppInput } from '../../components/common/app-input/app-input'
-import styles from './registration.module.scss'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+
+import { AppButton } from '../../components/common/app-button/app-button'
+import { AppInput } from '../../components/common/app-input/app-input'
 import { RegistrationInfo } from '../../components/registration-info/registration-info'
 import { useRegisterUserMutation } from '../../store/api/auth-api'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import styles from './registration.module.scss'
+
 
 interface ILoginForm {
   userName: string
