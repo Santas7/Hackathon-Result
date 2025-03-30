@@ -1,0 +1,45 @@
+.areaCard {
+  border-radius: 50%;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.cardInner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  font-size: calc(1.9vw + 17px);
+  color: #fcfcfc;
+  font-weight: 700;
+}
+
+.front {
+  background-color: #486a7c; 
+  transform: rotateY(0deg); 
+}
+
+.back {
+  background-color: #304859; 
+  transform: rotateY(180deg);
+}
+
+.areaCard.flipped .cardInner {
+  transform: rotateY(180deg); 
+}
