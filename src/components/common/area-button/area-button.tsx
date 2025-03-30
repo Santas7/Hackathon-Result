@@ -3,6 +3,6 @@ interface IButtonProps {
   onClick: () => void
 }
 
-export const Button = ({ buttonText, onClick }: IButtonProps) => {
+export const AreaButton = ({ buttonText, onClick }: IButtonProps) => {
   return <button onClick={() => onClick}>{buttonText}</button>
 }

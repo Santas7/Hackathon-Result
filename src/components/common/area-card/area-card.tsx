@@ -1,4 +1,4 @@
-import style from './araea-card.module.scss'
+import style from './area-card.module.scss'
 interface IAreaCardProps {}
 
 export const AreaCard = ({}: IAreaCardProps) => {

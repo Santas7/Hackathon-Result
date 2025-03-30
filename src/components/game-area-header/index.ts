@@ -1,1 +1,1 @@
-export { GameHeader } from './game-header'
+export { GameAreaHeader } from './game-area-header'

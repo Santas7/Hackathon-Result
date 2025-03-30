@@ -1,6 +1,6 @@
 import style from './game-footer.module.scss'
 
-import { PlayerCard } from '../UI/play-card/player-card'
+import { PlayerCard } from '../common/play-card/player-card'
 
 const playerArray: { name: string; point: number }[] = [
   { name: 'player 1', point: 3 },

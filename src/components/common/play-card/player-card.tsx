@@ -1,4 +1,4 @@
-import style from './play-card.module.scss'
+import style from './player-card.module.scss'
 
 interface IPlayerCardProps {
   playerName: string

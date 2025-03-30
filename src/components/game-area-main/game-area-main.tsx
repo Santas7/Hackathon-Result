@@ -1,47 +1,14 @@
-import style from './GameMain.module.scss'
-import { AreaCard } from '../UI/area-card/index'
+import style from './game-area-main.module.scss'
+import { AreaCard } from '../common/area-card/index'
 
 interface IGameAreaMainProps {}
 
 export const GameAreaMain = ({}: IGameAreaMainProps) => {
   return (
     <div className={style.gameAreaMain}>
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
-      <AreaCard />
+      {Array.from({ length: 36 }, (_, index) => (
+        <AreaCard key={index} />
+      ))}
     </div>
   )
 }
