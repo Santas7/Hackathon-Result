@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --noEmit && vite build",
     "lint": "ESLINT_USE_FLAT_CONFIG=true npx eslint . --report-unused-disable-directives --max-warnings 0 && stylelint '**/*.css' --max-warnings 0",
     "preview": "vite preview",
     "prettier": "prettier . --check --ignore-unknown",
