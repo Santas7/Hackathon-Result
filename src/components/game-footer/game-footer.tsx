@@ -13,9 +13,7 @@ export const GameFooter = () => {
     <footer className={style.footer}>
       {playerArray &&
         playerArray.length &&
-        playerArray.map((e) => (
-          <PlayerCard  playerName={e.name} playerPoint={e.point} />
-        ))}
+        playerArray.map((e) => <PlayerCard playerName={e.name} playerPoint={e.point} />)}
     </footer>
   )
 }

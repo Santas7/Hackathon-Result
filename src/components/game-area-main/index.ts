@@ -1,1 +1,1 @@
-export { GameAreaMain } from './game-area-main';
+export { GameAreaMain } from './game-area-main'
