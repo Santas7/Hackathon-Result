@@ -1,4 +1,4 @@
-import styles from './AppInput.module.scss'
+import styles from './app-input.module.scss'
 
 interface IAppInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean

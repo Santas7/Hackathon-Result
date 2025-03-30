@@ -1,6 +1,6 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { AppButton } from '../../components/common/app-button/app-button'
-import { AppInput } from '../../components/common/app-input/app-Input'
+import { AppInput } from '../../components/common/app-input/app-input'
 import styles from './login.module.scss'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
