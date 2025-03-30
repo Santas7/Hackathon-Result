@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import { IconType } from 'react-icons';
-
 import { generateCardValues } from '../utils/game-area.utils';
 
-
 export const useLogicMemoryGame = (
-    gridSize: "4" | "6" | "8", 
-    theme: "Numbers" | "Icons"
+  gridSize: "4" | "6" | "8", 
+  theme: "Numbers" | "Icons"
 ) => {
   const [cardValues, setCardValues] = useState<(number | IconType)[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<Set<number | IconType>>(new Set());
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [isGameWon, setIsGameWon] = useState<boolean>(false);
 
   useEffect(() => {
     setCardValues(generateCardValues(gridSize, theme));
+    setIsGameWon(false);
   }, [gridSize, theme]);
 
   const handleCardClick = (index: number) => {
@@ -35,7 +35,13 @@ export const useLogicMemoryGame = (
       setIsProcessing(true);
       const [firstIndex, secondIndex] = flippedCards;
       if (cardValues[firstIndex] === cardValues[secondIndex]) {
-        setMatchedCards((prev) => new Set(prev).add(cardValues[firstIndex]));
+        setMatchedCards((prev) => {
+          const newMatched = new Set(prev).add(cardValues[firstIndex]);
+          if (newMatched.size === cardValues.length / 2) {
+            setIsGameWon(true);
+          }
+          return newMatched;
+        });
       }
       setTimeout(() => {
         setFlippedCards([]);
@@ -49,6 +55,7 @@ export const useLogicMemoryGame = (
     setFlippedCards([]);
     setMatchedCards(new Set());
     setIsProcessing(false);
+    setIsGameWon(false);
   };
 
   return {
@@ -57,6 +64,7 @@ export const useLogicMemoryGame = (
     matchedCards,
     handleCardClick,
     resetGame,
-    isProcessing
+    isProcessing,
+    isGameWon
   };
 };

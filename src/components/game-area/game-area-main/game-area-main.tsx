@@ -1,12 +1,13 @@
 import { useSelector } from 'react-redux';
-
-import { RootState } from '../../../store'; 
+import { RootState } from '../../../store';
 import { AreaCard } from '../../common/area-card/index';
 import { useGameTime } from '../../../core/hooks/use-game-timer';
 import { useGameMove } from '../../../core/hooks/use-game-move';
 import { useLogicMemoryGame } from '../../../core/hooks/use-logic-memory-game';
 import { GameTimer } from '../../game-timer';
-
+import { GameOverModal } from '../../game-over-modal'; 
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import styles from './game-area-main.module.scss';
 
 export const GameAreaMain = () => {
@@ -17,13 +18,15 @@ export const GameAreaMain = () => {
   }));
   const { formattedTime, resetTime, isTimeUp, stopTimer } = useGameTime(true);
   const { movesTaken, incrementMoves, resetMoves } = useGameMove();
-  const { cardValues, flippedCards, matchedCards, handleCardClick, resetGame } = useLogicMemoryGame(
-    gridSize || "6", 
-    theme || "Numbers" 
+  const { cardValues, flippedCards, matchedCards, handleCardClick, resetGame, isGameWon } = useLogicMemoryGame(
+    gridSize || "6",
+    theme || "Numbers"
   );
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const navigate = useNavigate();
 
   const onCardClick = (index: number) => {
-    if (isTimeUp()) return;
+    if (isTimeUp() || isGameWon) return;
     if (handleCardClick(index)) incrementMoves();
   };
 
@@ -31,7 +34,23 @@ export const GameAreaMain = () => {
     resetTime();
     resetMoves();
     resetGame();
+    setIsModalOpen(false); 
   };
+
+  const handleNewGame = () => {
+    navigate('/dashboard-page')
+  }
+  const handleRestart = () => {
+    navigate('/game-area-page')
+    window.location.reload()
+  }
+
+  useEffect(() => {
+    if (isGameWon) {
+      stopTimer();
+      setIsModalOpen(true); 
+    }
+  }, [isGameWon, stopTimer]);
 
   return (
     <div className={styles.gameAreaMainWrapper}>
@@ -51,6 +70,14 @@ export const GameAreaMain = () => {
         isTimeUp={isTimeUp()}
         onReset={handleReset}
       />
+      {isModalOpen && (
+        <GameOverModal
+          timeElapsed={formattedTime}
+          movesTaken={movesTaken}
+          onRestart={handleRestart}
+          onNewGame={handleNewGame}
+        />
+      )}
     </div>
   );
 };

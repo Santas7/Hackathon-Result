@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export const GameAreaHeader = ({}: IGameAreaHeaderProps) => {
   const navigate = useNavigate();
   const handleNewGame = () => {
-    navigate('/game-setup-page')
+    navigate('/dashboard-page')
   }
   const handleRestart = () => {
     navigate('/game-area-page')
