@@ -1,4 +1,4 @@
-import styles from './dashboard-page.module.scss'
+import styles from './dashboard.module.scss'
 import { AppButton } from '../../components/common/AppButton/app-button'
 
 interface IDashboardPageProps {}

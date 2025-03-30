@@ -1,11 +1,11 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { AppButton } from '../../components/common/AppButton/app-button'
 import { AppInput } from '../../components/common/AppInput/AppInput'
-import styles from './registration-page.module.scss'
+import styles from './registration.module.scss'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { RegistrationInfo } from '../../components/registration-info/registration-info'
-import { useRegisterUserMutation } from '../../store/Api/authApi'
+import { useRegisterUserMutation } from '../../store/api/auth-api'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
