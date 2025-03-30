@@ -1,5 +1,5 @@
 import styles from './dashboard.module.scss'
-import { AppButton } from '../../components/common/AppButton/app-button'
+import { AppButton } from '../../components/common/app-button/app-button'
 import { useNavigate } from 'react-router-dom'
 
 interface IDashboardPageProps {}
