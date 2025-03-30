@@ -1,18 +1,18 @@
-import { GameTimer } from './components/game-timer/game-timer'
+import { Login } from './pages/login/login'
+import { Registration } from './pages/registration/registration'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GameArea } from './pages/game-area'
-import { GameSetup } from './pages/game-setup'
-import { TestTimer } from './pages/test-timer/TestTimer'
+import { Dashboard } from './pages/dashboard/dashboard'
 
 export const App = () => {
-
   return (
-    <div>
-      {/* <GameSetup /> */}
-      {/* <GameTimer
-        time="01:22"
-        movesTaken={4}
-      /> */}
-      <GameArea />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/registration-page" element={<Registration />} />
+        <Route path="/game-area-page" element={<GameArea />} />
+        <Route path="/dashboard-page" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

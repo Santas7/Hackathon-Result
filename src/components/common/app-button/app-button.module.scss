@@ -1,0 +1,39 @@
+.appButton {
+  cursor: pointer;
+  padding: 12px 15px;
+  font-size: inherit;
+  border-radius: 10px;
+  background-color: #526ed3; // Убрал кавычки
+  color: white;
+  transition: 200ms;
+  border: none;
+  &:disabled {
+    background-color: #c1c6d3; // Убрал кавычки
+  }
+
+  &.primary {
+    background-color: #526ed3; // Убрал кавычки
+    color: white;
+  }
+
+  &.secondary {
+    background-color: #e3e3e3; // Убрал кавычки
+    color: #8c8c8c; // Убрал кавычки
+  }
+
+  &:disabled:hover {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  &:hover {
+    translate: 0 -5px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  &:active {
+    transition: 100ms;
+    translate: 0 0;
+    box-shadow: none;
+  }
+}

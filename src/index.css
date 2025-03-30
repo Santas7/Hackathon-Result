@@ -4,3 +4,6 @@
   box-sizing: border-box;
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
+body {
+  min-height: 100vh;
+}

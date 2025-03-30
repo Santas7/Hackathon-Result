@@ -1,0 +1,53 @@
+.loginWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f6f6;
+
+  .container {
+    box-shadow: 0 0 10px #e3e3e3;
+    border-radius: 20px;
+    background-color: #fff;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    padding: 40px;
+    h1 {
+      margin-bottom: 50px;
+    }
+
+    button {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      text-align: right;
+      text-decoration: none;
+      color: #717171;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @media (max-width: 530px) {
+      width: 100%;
+    }
+  }
+}
+
+.errorMessage {
+  background-color: #ffe6e6;
+  color: #ff3333;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ff3333;
+  text-align: left;
+}

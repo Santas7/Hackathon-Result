@@ -1,43 +1,76 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  font-weight: 700;
+  line-height: 100%;
+  .panelsContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding-bottom: 40px; 
-    font-weight: 700;
-    line-height: 100%;
-}
-
-.panelsContainer {
-    display: flex;
-    flex-direction: row;
+    justify-content: center;
     gap: 30px;
+    width: 100%;
+  }
 }
 
 .panel {
-    font-size: 18px;
-    font-weight: bold;
-  
-    .stat {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-      background: #dfe7ec;
-      border-radius: 10px;
-      padding: 30px; 
-      flex: 1;
-      color: #7191a5;
-      gap: 20px; 
+  font-size: 18px;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  background: #dfe7ec;
+  border-radius: 10px;
+  padding: 30px;
+  flex-grow: 1;
+  color: #7191a5;
+  gap: 20px;
+  max-width: 300px;
+
+  .statValue {
+    font-size: 32px;
+    color: #304859;
+  }
+}
+
+.timeUpMessage {
+  margin-top: 20px;
+  text-align: center;
+
+  span {
+    display: block;
+    color: #ff4444;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #45a049;
     }
-  
-    .statValue {
-      margin-left: 100px;
-      font-size: 32px;
-      color: #304859;
-    }
+  }
+}
+@media (max-width: 795px) {
+  .panelsContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 495px) {
+  .panel {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
 }

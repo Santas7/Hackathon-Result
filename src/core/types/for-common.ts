@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 export interface IActionButtonProps {
   onClick: () => void
   children: React.ReactNode
@@ -5,16 +7,21 @@ export interface IActionButtonProps {
 }
 
 export interface IAreaButtonProps {
-    buttonText: string
-    onClick: () => void
+  buttonText: string
+  onClick: () => void
 }
 
 export interface IAreaCardProps {
-    n: number | null,
-    onClick: () => void
+  n: number | IconType | null;
+  onClick: () => void;
+  isIcon?: boolean;
 }
 
 export interface IPlayerCardProps {
-    playerName: string
-    playerPoint: number
+  playerName: string
+  playerPoint: number
+}
+
+export interface IBurgerMenu {
+  closeClick: () => void
 }

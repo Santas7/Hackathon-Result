@@ -1,0 +1,33 @@
+.appInput {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+
+  input {
+    outline: 0;
+    font-family: inherit;
+    padding: 12px 15px;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    border: 2px solid #c1c6d3;
+    width: 100%;
+    transition: 200ms;
+
+    &:is(:hover, :focus) {
+      border-color: #526ed3;
+    }
+
+    @media (max-width: 730px) {
+      padding: 10px 12px;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  p {
+    color: #dc2020;
+    margin: 10px 0;
+  }
+}

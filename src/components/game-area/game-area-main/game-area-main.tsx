@@ -1,54 +1,85 @@
-import { useState, useEffect } from 'react';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store';
 import { AreaCard } from '../../common/area-card/index';
-import { generateCardNumbers } from '../../../core/utils/game-area.utils';
-import { IGameAreaMainProps } from '../../../core/types/for-game-area';
-
+import { useGameTime } from '../../../core/hooks/use-game-timer';
+import { useGameMove } from '../../../core/hooks/use-game-move';
+import { useLogicMemoryGame } from '../../../core/hooks/use-logic-memory-game';
+import { GameTimer } from '../../game-timer';
+import { GameOverModal } from '../../game-over-modal'; 
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import styles from './game-area-main.module.scss';
 
-export const GameAreaMain = ({}: IGameAreaMainProps) => {
-  const [cardNumbers, setCardNumbers] = useState<number[]>([]);
-  const [flippedCards, setFlippedCards] = useState<number[]>([]);
-  const [matchedCards, setMatchedCards] = useState<Set<number>>(new Set()); 
-  const [isProcessing, setIsProcessing] = useState<boolean>(false); 
+export const GameAreaMain = () => {
+  const { gridSize, players, theme } = useSelector((state: RootState) => ({
+    gridSize: state.gameSetup.settings.gridSize,
+    players: state.gameSetup.settings.players,
+    theme: state.gameSetup.settings.theme,
+  }));
+  const { formattedTime, resetTime, isTimeUp, stopTimer } = useGameTime(true);
+  const { movesTaken, incrementMoves, resetMoves } = useGameMove();
+  const { cardValues, flippedCards, matchedCards, handleCardClick, resetGame, isGameWon } = useLogicMemoryGame(
+    gridSize || "6",
+    theme || "Numbers"
+  );
+  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    setCardNumbers(generateCardNumbers()); 
-  }, []);
-
-  const handleCardClick = (index: number) => {
-    if (isProcessing || flippedCards.length === 2 || flippedCards.includes(index) || matchedCards.has(cardNumbers[index])) {
-      return; 
-    }
-
-    setFlippedCards((prev) => [...prev, index]);
+  const onCardClick = (index: number) => {
+    if (isTimeUp() || isGameWon) return;
+    if (handleCardClick(index)) incrementMoves();
   };
 
+  const handleReset = () => {
+    resetTime();
+    resetMoves();
+    resetGame();
+    setIsModalOpen(false); 
+  };
+
+  const handleNewGame = () => {
+    navigate('/dashboard-page')
+    window.location.reload()
+  }
+
+  const handleRestart = () => {
+    navigate('/game-area-page')
+    window.location.reload()
+  }
+
   useEffect(() => {
-    if (flippedCards.length === 2) {
-      setIsProcessing(true); 
-
-      const [firstIndex, secondIndex] = flippedCards;
-      if (cardNumbers[firstIndex] === cardNumbers[secondIndex]) {
-        setMatchedCards((prev) => new Set(prev).add(cardNumbers[firstIndex]));
-      }
-
-      setTimeout(() => {
-        setFlippedCards([]);
-        setIsProcessing(false); 
-      }, 1000);
+    if (isGameWon) {
+      stopTimer();
+      setIsModalOpen(true); 
     }
-  }, [flippedCards, cardNumbers]);
+  }, [isGameWon, stopTimer]);
 
   return (
-    <div className={styles.gameAreaMain}>
-      {cardNumbers.map((number, index) => (
-        <AreaCard
-          key={index}
-          n={flippedCards.includes(index) || matchedCards.has(number) ? number : null} 
-          onClick={() => handleCardClick(index)} 
+    <div className={styles.gameAreaMainWrapper}>
+      <div className={`${styles.gameAreaMain} ${styles[`grid${gridSize}`]}`}>
+        {cardValues.map((value, index) => (
+          <AreaCard
+            key={index}
+            n={flippedCards.includes(index) || matchedCards.has(value) ? value : null}
+            onClick={() => onCardClick(index)}
+            isIcon={theme === "Icons"}
+          />
+        ))}
+      </div>
+      <GameTimer
+        time={formattedTime}
+        movesTaken={movesTaken}
+        isTimeUp={isTimeUp()}
+        onReset={handleReset}
+      />
+      {isModalOpen && (
+        <GameOverModal
+          timeElapsed={formattedTime}
+          movesTaken={movesTaken}
+          onRestart={handleRestart}
+          onNewGame={handleNewGame}
         />
-      ))}
+      )}
     </div>
   );
 };

@@ -1,14 +1,65 @@
+.gameAreaMainWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
 .gameAreaMain {
   display: grid;
-  grid-template-columns: repeat(6, 80px);
-  grid-template-rows: repeat(6, 80px);
   gap: calc(0.8vw + 5.2px);
   width: fit-content;
   margin: 0 auto;
 }
-@media (max-width: 750px) {
-  .gameAreaMain {
-    grid-template-columns: repeat(6, 48px);
-    grid-template-rows: repeat(6, 48px);
+
+.grid4 {
+  grid-template-columns: repeat(4, 120px);
+  grid-template-rows: repeat(4, 120px);
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(4, 90px);
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: repeat(4, 70px);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(4, 50px);
+  }
+}
+
+.grid6 {
+  grid-template-columns: repeat(6, 100px);
+  grid-template-rows: repeat(6, 100px);
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(6, 75px);
+    grid-template-rows: repeat(6, 75px);
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(6, 45px);
+    grid-template-rows: repeat(6, 45px);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(6, 30px);
+    grid-template-rows: repeat(6, 30px);
+  }
+}
+
+.grid8 {
+  grid-template-columns: repeat(8, 90px);
+  grid-template-rows: repeat(8, 90px);
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(8, 70px);
+    grid-template-rows: repeat(8, 70px);
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(8, 35px);
+    grid-template-rows: repeat(8, 35px);
   }
 }
